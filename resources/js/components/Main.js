@@ -42,7 +42,11 @@ class Main extends Component {
                 */
 
                 <li key={stop.id}>
-                    {stop.name} - <a href="javascript:void(0)" onClick={(e) => this.registerBus(userid,stop.id, e)}>Register</a>
+                    {stop.name}
+                    <div id={stop.id + '_register'}>
+                    { (typeof stop.users[0]) !== 'undefined' && stop.users[0].user_id == userid ? ('Registered') : (<a href="javascript:void(0)" onClick={(e) => this.registerBus(userid,stop.id, e)}>Register</a>)  }
+                </div>
+
                     <ul>
                         {
                             stop.buses.map(bus => {
@@ -59,8 +63,30 @@ class Main extends Component {
         })
     }
 
-    registerBus(user_id,bus_id) {
-        // TODO POST - API call with token to store data into pivot table user_stop.
+    registerBus(user_id,stop_id) {
+        var r = confirm("Are you sure? You want to register?");
+        if (r == true) {
+            var headers = {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + MyGlobleSetting.getAccessToken()
+            }
+
+            axios.post(MyGlobleSetting.url + '/api/stops/register', {
+                'user_id' : user_id,
+                'stop_id' : stop_id
+            },{ headers: headers,})
+                .then(response => {
+                    console.log(response);
+                    if (response.data.status == "1") {
+                        document.getElementById(response.data.stop_id + '_register').innerHTML = "Registered";
+                    }
+
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+
     }
 
 

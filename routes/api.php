@@ -24,7 +24,7 @@ Route::post('register', 'API\UserController@register');
 Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('stops', 'API\StopController@listing');
-
+    Route::post('stops/register', 'API\StopController@register');
 });
 
 

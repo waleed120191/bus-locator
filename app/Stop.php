@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Stop extends Model
 {
     /**
-     * The roles that belong to the user.
+     * The roles that belong to the bus.
      */
     public function buses()
     {
@@ -19,5 +19,13 @@ class Stop extends Model
         $results = \DB::select(\DB::raw('SELECT id, ( 3959 * acos( cos( radians(' . $lat . ') ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(' . $lng . ') ) + sin( radians(' . $lat .') ) * sin( radians(lat) ) ) ) AS distance FROM stops HAVING distance < ' . $distance . ' ORDER BY distance') );
 
         return $results;
+    }
+
+    /**
+     * The roles that belong to the user.
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\User','user_stop');
     }
 }

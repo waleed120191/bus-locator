@@ -28,4 +28,12 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * The roles that belong to the stop.
+     */
+    public function stops()
+    {
+        return $this->belongsToMany('App\Stop','user_stop');
+    }
 }
