@@ -19336,7 +19336,7 @@ var Main = function (_Component) {
                 'Authorization': 'Bearer ' + __WEBPACK_IMPORTED_MODULE_3__MyGlobleSetting__["a" /* default */].getAccessToken()
             };
 
-            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_3__MyGlobleSetting__["a" /* default */].url + '/api/stops?lat=31.24&lng=74.21', { headers: headers }).then(function (response) {
+            __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get(__WEBPACK_IMPORTED_MODULE_3__MyGlobleSetting__["a" /* default */].url + '/api/stops?lat=31.57&lng=74.36', { headers: headers }).then(function (response) {
                 _this2.setState({ stops: response.data });
             }).catch(function (error) {
                 console.log(error);
@@ -42214,7 +42214,16 @@ var MyGlobleSetting = function () {
     }, {
         key: 'getAccessToken',
         value: function getAccessToken() {
-            return this.getParameterByName('access_token');
+            var at;
+
+            if (this.getParameterByName('access_token')) {
+                localStorage.setItem('at', this.getParameterByName('access_token'));
+                at = this.getParameterByName('access_token');
+            } else {
+                at = localStorage.getItem('at');
+            }
+
+            return at;
         }
     }, {
         key: 'getIdToken',

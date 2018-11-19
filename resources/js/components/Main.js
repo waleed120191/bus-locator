@@ -22,7 +22,7 @@ class Main extends Component {
             'Authorization': 'Bearer ' + MyGlobleSetting.getAccessToken()
         }
 
-        axios.get(MyGlobleSetting.url + '/api/stops?lat=31.24&lng=74.21', {headers: headers})
+        axios.get(MyGlobleSetting.url + '/api/stops?lat=31.57&lng=74.36', {headers: headers})
             .then(response => {
                 this.setState({stops: response.data});
             })

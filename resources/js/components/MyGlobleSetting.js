@@ -9,12 +9,22 @@ class MyGlobleSetting {
     }
 
     getAccessToken() {
-        return this.getParameterByName('access_token');
+        var  at;
+
+        if (this.getParameterByName('access_token')) {
+           localStorage.setItem('at', this.getParameterByName('access_token'));
+            at =  this.getParameterByName('access_token');
+        }else{
+            at =  localStorage.getItem('at');
+        }
+
+        return at;
     }
 
     getIdToken() {
         return this.getParameterByName('id_token');
     }
 }
+
 export default (new MyGlobleSetting);
 
