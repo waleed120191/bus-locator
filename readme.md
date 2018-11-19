@@ -34,6 +34,7 @@ HomeController@index is used for SPA init page. API requests are made from front
 5) Then run command php artisan passport:keys
 6) Ideal way is to run migration and client command But for quick setup, Import db.sql.
 7) At root folder in .env file configure DB config.
+8) On CLI go to root folder bus-locatar and run command php artisan serve. The url mentioned will be url to start with.
 
 
 
