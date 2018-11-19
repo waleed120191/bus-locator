@@ -25,3 +25,15 @@ Login button works on Oauth2 - implict grant. It is used for security reason (pr
 
 HomeController@index is used for SPA init page. API requests are made from frontend along with token to GET & POST data.
 
+## Step by step guide to configure project locally
+
+1) git clone https://github.com/waleed120191/bus-locator
+2) On CLI go to root folder bus-locatar and run command composer update.
+3) Then run command npm install && npm run dev.
+4) Then run command composer dumpautoload.
+5) Then run command php artisan passport:keys
+6) Ideal way is to run migration and client command But for quick setup, Import db.sql with name incube8.
+7) At root folder in .env file configure DB config.
+
+
+
