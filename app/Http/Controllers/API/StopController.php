@@ -10,7 +10,7 @@ class StopController extends Controller
     public $successStatus = 200;
 
     /**
-     * Register api
+     * Listing api
      *
      * @return \Illuminate\Http\Response
      */
