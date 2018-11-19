@@ -32,7 +32,7 @@ HomeController@index is used for SPA init page. API requests are made from front
 3) Then run command npm install && npm run dev.
 4) Then run command composer dumpautoload.
 5) Then run command php artisan passport:keys
-6) Ideal way is to run migration and client command But for quick setup, Import db.sql with name incube8.
+6) Ideal way is to run migration and client command But for quick setup, Import db.sql.
 7) At root folder in .env file configure DB config.
 
 
